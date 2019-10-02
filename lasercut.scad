@@ -3,7 +3,7 @@ DOWN = 180;
 LEFT = 90;
 RIGHT = 270;
 MID = 360;
-kerf=0.0;// Hacky global for kerf
+kerf=0.6;// Hacky global for kerf
 
 generate = 0; 
 
@@ -553,7 +553,7 @@ module simpleSlit(angle, x, y, length, thickness)
 
 module simpleCutouts(x, y, width, height, thickness)
 {
-     translate([x,y,0]) rotate([0,0,0]) translate([0,0,-thickness]) cube([width, height, thickness*3]);     
+     translate([x+kerf/2,y+kerf/2,0]) rotate([0,0,0]) translate([0,0,-thickness]) cube([width-kerf, height-kerf, thickness*3]);     
 }
 
 module lasercutoutBox(thickness, x=0, y=0, z=0, sides=6, num_fingers=2,
